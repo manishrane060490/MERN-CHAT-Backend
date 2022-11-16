@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "chat application with React, Node, Mongo, Express",
   "main": "server.js",
+  "proxy": "http://localhost:1000/",
   "scripts": {
+    "start": "node backend/server.js",
     "dev:backend": "nodemon backend/server.js --ignore client"
   },
   "author": "Manish Rane",
