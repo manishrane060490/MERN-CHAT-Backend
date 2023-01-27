@@ -4,7 +4,6 @@ const User = require('../models/userModel');
 
 const registerUser = asyncHandler(async(req, res) => {  
 
-    console.log(req.body);
     const { name, email, password, pic} = req.body;
 
     if(!name || !email || !password) {
@@ -41,7 +40,6 @@ const registerUser = asyncHandler(async(req, res) => {
 })
 
 const authUser = asyncHandler(async(req, res) => {
-    console.log(req.body)
     const {email, password} = req.body;
 
     if(!email || !password) {

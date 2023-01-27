@@ -5,7 +5,6 @@ const User = require('../models/userModel');
 const accessChat = asyncHandler(async(req,res) => {
 
     const { userId } = req.body;
-    console.log(req.body);
 
     if(!userId) {
         console.log("UserId param not sent with request");
@@ -67,13 +66,11 @@ const fetchChats = asyncHandler(async(req,res) => {
 });
 
 const createGroupChat = asyncHandler(async(req,res) => {
-    const { users, name } = req.body;
-
-    if(!users || !name) {
+    if(!req.body.users || !req.body.name) {
         res.status(400).send("Group name or users not empty");
     }
 
-    users = JSON.parse(users);
+    var users = JSON.parse(req.body.users);
 
     if(users.length > 2) {
         res.status(400).send("Please select alteast 2 users for group chat");
@@ -84,7 +81,7 @@ const createGroupChat = asyncHandler(async(req,res) => {
     try{
 
         const groupChat = await Chat.create({
-            chatName: name,
+            chatName: req.body.name,
             isGroupChat: true,
             users,
             groupAdmin: req.user
@@ -100,7 +97,7 @@ const createGroupChat = asyncHandler(async(req,res) => {
     }
 })
 
-const renameGroup = asyncHandler(async(res,req) => { 
+const renameGroup = asyncHandler(async(req,res) => {
     const { chatId, chatName } = req.body;
 
     const updatedChat = await Chat.findByIdAndUpdate(chatId, {
