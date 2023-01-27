@@ -3,10 +3,9 @@
   "version": "1.0.0",
   "description": "chat application with React, Node, Mongo, Express",
   "main": "server.js",
-  "proxy": "http://localhost:1000/",
   "scripts": {
-    "start": "node server.js",
-    "dev:backend": "nodemon server.js --ignore client"
+    "start": "node backend/server.js",
+    "dev:backend": "nodemon backend/server.js --ignore client"
   },
   "author": "Manish Rane",
   "license": "ISC",
@@ -18,6 +17,7 @@
     "express-async-handler": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.7.2",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "socket.io": "^4.5.4"
   }
 }
